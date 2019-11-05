@@ -1,0 +1,25 @@
+[
+   {
+       "mnemonic": "n",
+       "caption": "Preferences",
+       "id": "preferences",
+       "children": [
+           {
+               "mnemonic": "P",
+               "caption": "Package Settings",
+               "id": "package-settings",
+               "children": [
+                   {
+                     "caption": "Sqlx Builder",
+                     "children": [
+                      {
+                       "caption": "Build Sqlx Script (to Clipboard)",
+                       "command": "build_sqlx"
+                       },
+                     ]
+                   }
+               ]
+           }
+       ]
+   }
+]

@@ -1,0 +1,6 @@
+[
+    {
+        "caption": "Build Sqlx Script (to Clipboard)",
+        "command": "build_sqlx"
+    }
+]

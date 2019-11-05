@@ -1,0 +1,12 @@
+[
+    { "caption": "-", "id": "file" },
+    {
+        "caption": "Sqlx Builder",
+        "children": [
+            {
+                "caption": "Build Sqlx Script (to Clipboard)",
+                "command": "build_sqlx"
+            }
+        ]
+    }
+]
