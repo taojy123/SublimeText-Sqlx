@@ -9,3 +9,8 @@ A plugin of Sublime Text3 for build sqlx script
 - if not error happen, the build result will copy to Clipboard
 - You can paste it anywhere
 
+## What is sqlx script
+
+sqlx is a external for sql language, visit https://github.com/taojy123/sqlx to learn more about sqlx
+
+
