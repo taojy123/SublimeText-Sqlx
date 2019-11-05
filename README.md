@@ -12,7 +12,7 @@ A plugin of `Sublime Text3` for build sqlx script
 
 ## What is sqlx script
 
-sqlx is a external for sql language, visit https://github.com/taojy123/sqlx to learn more about sqlx
+sqlx is a extension for sql language, visit https://github.com/taojy123/sqlx to learn more about sqlx
 
 
 ## Install By Package Control
