@@ -2,5 +2,12 @@
     {
         "caption": "Build Sqlx Script (to Clipboard)",
         "command": "build_sqlx"
+    },
+    {
+        "caption": "Build Sqlx Script (to dist)",
+        "command": "build_sqlx",
+        "args": {
+            "to_dist": true
+        }
     }
 ]

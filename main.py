@@ -12,7 +12,7 @@ from . import sqlx
 
 class BuildSqlxCommand(sublime_plugin.TextCommand):
 
-    def run(self, edit):
+    def run(self, edit, to_dist=False):
 
 
         file = self.view.file_name()
@@ -42,11 +42,19 @@ class BuildSqlxCommand(sublime_plugin.TextCommand):
 
         try:
             sql_content = sqlx.build(sqlx_content, False, dirname)
-            sublime.set_clipboard(sql_content)
-            sublime.status_message('Built success, and copied the result to clipboard')
         except Exception as e:
             sublime.error_message('Built failed: %s' % e)
             raise e
         
+        if to_dist:
+            distname = os.path.join(dirname, 'dist')
+            filename = os.path.join(distname, filename[:-1])
+            if not os.path.isdir(distname):
+                os.makedirs(distname)
+            open(filename, 'w', encoding='utf8').write(sql_content)
+            sublime.status_message('Built success, and saved to dist')
+        else:
+            sublime.set_clipboard(sql_content)
+            sublime.status_message('Built success, and copied the result to clipboard')
 
 
