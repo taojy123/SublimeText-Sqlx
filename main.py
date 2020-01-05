@@ -34,7 +34,8 @@ class BuildSqlxCommand(sublime_plugin.TextCommand):
         self.view.run_command("select_all")
         regions = self.view.sel()
         sqlx_content = self.view.substr(regions[0])
-        assert len(regions) == 1
+        if len(regions) != 1:
+            sublime.status_message('regions error')
 
         # Another Way
         # selection = sublime.Region(0, self.view.size())
