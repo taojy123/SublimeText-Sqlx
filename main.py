@@ -3,7 +3,6 @@
 import os
 import traceback
 
-
 import sublime
 import sublime_plugin
 
@@ -14,22 +13,17 @@ class BuildSqlxCommand(sublime_plugin.TextCommand):
 
     def run(self, edit, to_dist=False):
 
-
-        file = self.view.file_name()
+        file = self.view.file_name() or ''
         print('Building: %s' % file)
 
-        if not file:
-            sublime.status_message('Please save file first')
-            return
+        if to_dist:
+            if not file:
+                sublime.status_message('Please save file first')
+                return
+            if not file.endswith('.sqlx'):
+                sublime.status_message('Only .sqlx files can be built by sqlx')
+                return
 
-        if not file.endswith('.sqlx'):
-            sublime.status_message('Only .sqlx files can be built by sqlx')
-            return
-
-        # print(self.view.settings().get('syntax'))
-        self.view.set_syntax_file('Packages/SQL/SQL.sublime-syntax')
-
-        dirname, filename = os.path.split(file)
 
         self.view.run_command("select_all")
         regions = self.view.sel()
@@ -40,6 +34,8 @@ class BuildSqlxCommand(sublime_plugin.TextCommand):
         # Another Way
         # selection = sublime.Region(0, self.view.size())
         # sqlx_content = self.view.substr(selection)
+
+        dirname, filename = os.path.split(file)
 
         try:
             sql_content = sqlx.build(sqlx_content, False, dirname)
@@ -53,9 +49,11 @@ class BuildSqlxCommand(sublime_plugin.TextCommand):
             if not os.path.isdir(distname):
                 os.makedirs(distname)
             open(filename, 'w', encoding='utf8').write(sql_content)
-            sublime.status_message('Built success, and saved to dist')
+            sublime.status_message('Built success, and saved to `%s`' % distname)
         else:
             sublime.set_clipboard(sql_content)
             sublime.status_message('Built success, and copied the result to clipboard')
+            # print(self.view.settings().get('syntax'))
+            self.view.set_syntax_file('Sqlx.sublime-syntax')
 
 

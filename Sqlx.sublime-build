@@ -1,0 +1,10 @@
+{
+    "target": "sqlx_build",
+    "file_patterns": "*.sqlx",
+    "variants": [
+        {
+            "name": "Build To Dist",
+            "to_dist": true
+        }
+    ]
+}
